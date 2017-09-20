@@ -26,6 +26,15 @@ class App extends Component {
           theme and navigable using React Router v4. In the near future I plan
           to add a basic blog component fed by a restful API.
         </p>
+        <p>
+          <a
+            href="https://github.com/nickfday/react-bootstrap-and-go"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Github Repo
+          </a>
+        </p>
       </div>
     );
   }
