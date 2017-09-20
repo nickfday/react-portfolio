@@ -7,3 +7,16 @@ It can be used as an example of how to consume components and give developers ne
 At time of writing it is simply a web app with a Bootstrap v4 beta theme and navigable using React Router v4. In the near future I plan to add a basic blog component fed by a restful API.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
+## Quick Overview
+
+[Install create-react-app.](https://github.com/facebookincubator/create-react-app)
+
+```sh
+git clone https://github.com/nickfday/react-bootstrap-and-go.git
+cd react-bootstrap-and-go/
+npm install
+npm run start
+```
+
+
