@@ -21,7 +21,7 @@ class Navigation extends Component {
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <Link className="navbar-brand" to="/">
-          React Web App
+          react-bootstrap-and-go
         </Link>
         <NavbarToggler right onClick={this.toggle} />
 
