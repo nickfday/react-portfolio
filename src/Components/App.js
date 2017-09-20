@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Footer from "./Footer";
 import About from "./About";
-import Navigation from "./Nav";
+import Navigation from "./Navigation";
 import "bootstrap/dist/css/bootstrap.css";
-
 import "./App.css";
 
 const NoMatch = ({ location }) => (
