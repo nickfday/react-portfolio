@@ -1,23 +1,22 @@
 import React from "react";
+import { Follow } from "react-twitter-widgets";
 
 function About() {
   return (
     <div className="about">
+      <h1>About</h1>
       <p>
         I am a full-time web developer based in London. I have a passion for
         frontend development as well as backend Drupal dev.
       </p>
       <p>Feel free to contact me on Twitter:</p>
-      <p>
-        <a
-          href="https://twitter.com/nickfday"
-          className="twitter-follow-button"
-          data-show-count="false"
-        >
-          Follow @nickfday
-        </a>
-        <script async src="//platform.twitter.com/widgets.js" charset="utf-8" />
-      </p>
+      <Follow
+        username="nickfday"
+        options={{
+          showCount: false,
+          size: "large"
+        }}
+      />
     </div>
   );
 }
