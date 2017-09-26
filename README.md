@@ -14,11 +14,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 2. Create a new repo for your project - https://github.com/new
 
-3. Clone the new repo - ```sh git clone https://github.com/[user]/[repoName])```
+3. Clone the new repo - 
+```sh git clone https://github.com/[user]/[repoName])```
 
-4. Add the original repos as upstream source - ```sh git remote add upstream https://github.com/nickfday/react-bootstrap-and-go```
+4. Add the original repos as upstream source -
+```sh git remote add upstream https://github.com/nickfday/react-bootstrap-and-go```
 
-5. Fetch and merge upstream- ```sh git fetch upstream & git merge upstream/master ``` (Do this each time you want to get the latest changes from this repo)
+5. Fetch and merge upstream - 
+```sh git fetch upstream & git merge upstream/master ``` (Do this each time you want to get the latest changes from this repo)
 
 6. Run the app - 
 ```sh
