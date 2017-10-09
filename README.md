@@ -29,7 +29,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 7. Run the app - 
 ```sh
 npm install
-npm run start
+npm start
 ```
 
 7. Start developing...
