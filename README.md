@@ -24,9 +24,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ```git remote add upstream https://github.com/nickfday/react-bootstrap-and-go```
 
 6. Fetch and merge upstream - 
-```git fetch upstream & git merge upstream/master ``` (Do this each time you want to get the latest changes from this repo)
+```git fetch upstream & git merge upstream/master ```
 
-7. Run the app - 
+7. Pull upstream
+```git pull upstream master``` (Do this each time you want to get the latest changes from this repo)
+
+8. Run the app - 
 ```sh
 npm install
 npm start
