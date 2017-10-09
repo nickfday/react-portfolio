@@ -6,10 +6,10 @@
     "bootstrap": "^4.0.0-beta",
     "node-sass-chokidar": "0.0.3",
     "popper.js": "^1.12.5",
-    "react": "^15.6.1",
+    "react": "^16.0.0",
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
     "react-twitter-widgets": "^1.6.1",
     "reactstrap": "^4.8.0"
