@@ -4,8 +4,11 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
+    "firebase": "^4.5.1",
+    "lodash": "^4.17.4",
     "node-sass-chokidar": "0.0.3",
     "popper.js": "^1.12.5",
+    "re-base": "^3.0.5",
     "react": "16.0.0",
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
@@ -22,8 +25,7 @@
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
-    "watch-css":
-      "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start": "npm run watch-css | react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

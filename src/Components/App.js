@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
+import { Blog, BlogSingle } from "./Blog";
 import Footer from "./Footer";
 import About from "./About";
 import Navigation from "./Navigation";
@@ -24,6 +25,8 @@ class App extends Component {
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
+                <Route exact path="/blog" component={Blog} />
+                <Route exact path="/blog/:id" component={BlogSingle} />
                 <Route component={NoMatch} />
               </Switch>
             </div>

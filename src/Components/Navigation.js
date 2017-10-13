@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Button, Collapse, NavbarToggler } from "reactstrap";
+//import { Blog } from "./Blog";
 
 class Navigation extends Component {
   constructor(props) {
@@ -33,6 +34,9 @@ class Navigation extends Component {
             </NavLink>
             <NavLink exact to="/about" className="nav-link">
               <span>About</span>
+            </NavLink>
+            <NavLink exact to="/blog" className="nav-link">
+              <span>Blog</span>
             </NavLink>
           </ul>
           <form className="form-inline my-2 my-lg-0">
