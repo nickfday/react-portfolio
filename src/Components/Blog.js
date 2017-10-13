@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import base from "../base";
 import _ from "lodash";
 import { Link } from "react-router-dom";
+var Loader = require("react-loader");
 
 export class Blog extends Component {
   constructor() {
     super();
     this.state = {
       articles: {},
+      loaded: false,
       tags: {}
     };
   }
@@ -25,11 +27,17 @@ export class Blog extends Component {
     });
   }
 
+  componentDidMount() {
+    this.state.loaded = true;
+  }
+
   render() {
     return (
       <div>
-        <h1>Blog</h1>
-        <BlogRow item={this.state.articles} />
+        <Loader loaded={this.state.loaded}>
+          <h1>Blog</h1>
+          <BlogRow item={this.state.articles} />
+        </Loader>
       </div>
     );
   }
@@ -73,7 +81,9 @@ export function BlogSingle(props) {
       <p>{item.featuredImage}</p>
       <p>{item.body}</p>
       <p>{item.tags}</p>
-      <p />
+      <Link to="/Blog">
+        <button className="btn btn-secondary btn-sm">Back to Articles</button>
+      </Link>
     </div>
   );
 }
