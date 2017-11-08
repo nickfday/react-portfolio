@@ -1,12 +1,16 @@
+import "bootstrap/dist/css/bootstrap.css";
+import "./App.css";
+
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
+import Navigation from "./Navigation";
 import { Blog, BlogSingle } from "./Blog";
 import Footer from "./Footer";
 import About from "./About";
-import Navigation from "./Navigation";
-import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
+import base from "../base";
+var Loader = require("react-loader");
+//import { fireBaseSync } from "./Helper";
 
 const NoMatch = ({ location }) => (
   <div className="container content">
@@ -15,12 +19,39 @@ const NoMatch = ({ location }) => (
 );
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      articles: {},
+      loaded: false
+    };
+  }
+
+  componentWillMount() {
+    this.fireBaseSync();
+  }
+
+  fireBaseSync() {
+    base.syncState("blog", {
+      context: this,
+      state: "articles",
+      asArray: false,
+      then() {
+        this.setState(prevState => ({
+          loaded: true
+        }));
+        //fireBaseSync("blog", this.state.articles);
+      }
+    });
+  }
+
   render() {
+    console.log(this);
     return (
       <div className="App">
         <Router>
           <div>
-            <Navigation />
+            <Navigation state={this.state} />
             <div className="container content">
               <Switch>
                 <Route exact path="/" component={Home} />

@@ -2,41 +2,44 @@ import React, { Component } from "react";
 import base from "../base";
 import { Link } from "react-router-dom";
 import "./style/blog.css";
+import { fireBaseSync } from "./Helper";
 var Loader = require("react-loader");
 
 export class Blog extends Component {
-  constructor() {
-    super();
-    this.state = {
-      articles: {},
-      loaded: false,
-      tags: {}
-    };
-  }
+  // constructor() {
+  //   super();
+  //   this.state = {
+  //     articles: {},
+  //     loaded: false,
+  //     tags: {}
+  //   };
+  // }
 
-  componentDidMount() {
-    this.fireBaseSync();
-  }
+  // componentDidMount() {
+  //   this.fireBaseSync();
+  // }
 
-  fireBaseSync() {
-    base.syncState("blog", {
-      context: this,
-      state: "articles",
-      asArray: false,
-      then() {
-        this.setState(prevState => ({
-          loaded: true
-        }));
-      }
-    });
-  }
+  // fireBaseSync() {
+  //   base.syncState("blog", {
+  //     context: this,
+  //     state: "articles",
+  //     asArray: false,
+  //     then() {
+  //       this.setState(prevState => ({
+  //         loaded: true
+  //       }));
+  //       fireBaseSync("blog", this.state.articles);
+  //     }
+  //   });
+  // }
 
   render() {
+    console.log(this);
     return (
       <div className="Blog">
-        <Loader loaded={this.state.loaded}>
+        <Loader loaded={this.props.location.state.loaded}>
           <h1>Blog</h1>
-          <BlogRow item={this.state.articles} />
+          <BlogRow item={this.props.location.state.articles} />
         </Loader>
       </div>
     );

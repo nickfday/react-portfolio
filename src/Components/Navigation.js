@@ -19,6 +19,7 @@ class Navigation extends Component {
   }
 
   render() {
+    console.log(this.props.state.articles);
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <Link className="navbar-brand" to="/">
@@ -35,9 +36,19 @@ class Navigation extends Component {
             <NavLink exact to="/about" className="nav-link">
               <span>About</span>
             </NavLink>
-            <NavLink exact to="/blog" className="nav-link">
+            <Link
+              exact
+              to={{
+                pathname: "/blog",
+                state: {
+                  articles: this.props.state.articles,
+                  loaded: this.props.state.loaded
+                }
+              }}
+              className="nav-link"
+            >
               <span>Blog</span>
-            </NavLink>
+            </Link>
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input
