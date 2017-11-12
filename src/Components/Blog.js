@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import base from "../base";
 import { Link } from "react-router-dom";
 import "./style/blog.css";
-//import { fireBaseSync } from "./Helper";
 import { axiosFetch } from "./Helper";
 import Loader from "react-loader";
 

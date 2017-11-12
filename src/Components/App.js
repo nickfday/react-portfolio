@@ -10,10 +10,6 @@ import BlogSingle from "./BlogSingle";
 import Footer from "./Footer";
 import About from "./About";
 import base from "../base";
-import { axiosFetch } from "./Helper";
-import axios from "axios";
-var Loader = require("react-loader");
-//import { fireBaseSync } from "./Helper";
 
 const NoMatch = ({ location }) => (
   <div className="container content">

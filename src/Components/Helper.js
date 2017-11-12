@@ -1,4 +1,3 @@
-import React from "react";
 import base from "../base";
 import axios from "axios";
 
