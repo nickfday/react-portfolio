@@ -36,19 +36,9 @@ class Navigation extends Component {
             <NavLink exact to="/about" className="nav-link">
               <span>About</span>
             </NavLink>
-            <Link
-              exact
-              to={{
-                pathname: "/blog",
-                state: {
-                  articles: this.props.state.articles,
-                  loaded: this.props.state.loaded
-                }
-              }}
-              className="nav-link"
-            >
+            <NavLink to="/blog" className="nav-link">
               <span>Blog</span>
-            </Link>
+            </NavLink>
           </ul>
           <form className="form-inline my-2 my-lg-0">
             <input
