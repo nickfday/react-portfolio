@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import base from "../base";
 import { Link } from "react-router-dom";
 import "./style/blog.css";
 import { axiosFetch } from "./Helper";
@@ -11,11 +10,11 @@ class BlogSingle extends Component {
     this.state = {
       articles: null,
       loaded: false
-      //tags: {}
     };
   }
 
   fetchArticles() {
+    console.log("fetching");
     const self = this;
     axiosFetch(
       "https://react-bootstrap-and-go.firebaseio.com/blog.json",
@@ -24,8 +23,17 @@ class BlogSingle extends Component {
       "loaded"
     )
       .then(function(i) {
+        let item = i.find(
+          x =>
+            x.title.replace(/\s+/g, "-").toLowerCase() ===
+            self.props.location.pathname
+              .slice(6)
+              .replace(/\s+/g, "-")
+              .toLowerCase()
+        );
+
         self.setState({
-          articles: i,
+          articles: item,
           loaded: true
         });
       })
@@ -34,54 +42,61 @@ class BlogSingle extends Component {
       });
   }
 
-  componentWillMount() {
-    this.fetchArticles();
+  checkAvailableProps() {
+    const self = this;
+    if (this.props.location.state) {
+      self.setState({
+        articles: this.props.location.state.item,
+        loaded: true
+      });
+    } else {
+      this.fetchArticles();
+    }
+  }
+
+  componentDidMount() {
+    this.checkAvailableProps();
   }
 
   render() {
-    const self = this;
-    let item = [];
-
-    if (this.props.articles) {
-      item = this.props.articles;
-    } else if (this.state.articles !== null) {
-      item = this.state.articles.find(
-        x =>
-          x.title.replace(/\s+/g, "-").toLowerCase() ===
-          self.props.location.pathname
-            .slice(6)
-            .replace(/\s+/g, "-")
-            .toLowerCase()
-      );
-    }
-
-    // const tags = item.tags.map(function(i, index) {
-    //   if (index !== item.tags.length - 1) {
-    //     return <span key={i}>{i}, </span>;
-    //   } else {
-    //     item = "test";
-    //     return <span key={i}>{i}</span>;
-    //   }
-    // });
-
-    return (
-      <Loader loaded={this.state.loaded}>
-        <h4>{item.title}</h4>
-        <p>{item.date}</p>
-        <div className="img">
-          <img src={item.featuredImage} alt={item.featuredImageAlt} />
-        </div>
-        <p>{item.body}</p>
-        {/* <p>
+    if (this.state.articles) {
+      let item = this.state.articles;
+      return (
+        <Loader loaded={this.state.loaded}>
+          <h4>{item.title}</h4>
+          <p>{item.date}</p>
+          <div className="img">
+            <img src={item.featuredImage} alt={item.featuredImageAlt} />
+          </div>
+          <p>{item.body}</p>
+          <p>
             <strong>Tags: </strong>
-            {tags}
-          </p> */}
-        <Link to="/Blog">
-          <button className="btn btn-secondary btn-sm">Back to Articles</button>
-        </Link>
-      </Loader>
-    );
+            <Tags articles={item} />
+          </p>
+          <Link to="/Blog">
+            <button className="btn btn-secondary btn-sm">
+              Back to Articles
+            </button>
+          </Link>
+        </Loader>
+      );
+    } else {
+      return <Loader loaded={this.state.loaded} />;
+    }
   }
+}
+
+function Tags(props) {
+  let tags = [];
+  props.articles.tags.map(function(i, index) {
+    if (index !== props.articles.tags.length - 1) {
+      tags.push(<span key={i}>{i}, </span>);
+    } else {
+      tags.push(<span key={i}>{i}</span>);
+    }
+    return null;
+  });
+  return tags;
 }
 
 export default BlogSingle;
