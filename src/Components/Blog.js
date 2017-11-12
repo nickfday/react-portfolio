@@ -69,7 +69,7 @@ function BlogRow(props) {
               <div className="col-sm-8">
                 <Link
                   to={{
-                    pathname: `blog/${i.title}`
+                    pathname: `/blog/${i.title}`
                       .replace(/\s+/g, "-")
                       .toLowerCase(),
                     state: {
