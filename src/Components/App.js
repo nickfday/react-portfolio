@@ -5,10 +5,13 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Navigation from "./Navigation";
-import { Blog, BlogSingle } from "./Blog";
+import Blog from "./Blog";
+import BlogSingle from "./BlogSingle";
 import Footer from "./Footer";
 import About from "./About";
 import base from "../base";
+import { axiosFetch } from "./Helper";
+import axios from "axios";
 var Loader = require("react-loader");
 //import { fireBaseSync } from "./Helper";
 
@@ -23,12 +26,8 @@ class App extends Component {
     super();
     this.state = {
       articles: {},
-      loaded: false
+      loaded: true
     };
-  }
-
-  componentWillMount() {
-    this.fireBaseSync();
   }
 
   fireBaseSync() {
@@ -46,7 +45,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this);
     return (
       <div className="App">
         <Router>

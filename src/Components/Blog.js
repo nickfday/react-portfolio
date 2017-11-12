@@ -2,44 +2,54 @@ import React, { Component } from "react";
 import base from "../base";
 import { Link } from "react-router-dom";
 import "./style/blog.css";
-import { fireBaseSync } from "./Helper";
-var Loader = require("react-loader");
+//import { fireBaseSync } from "./Helper";
+import { axiosFetch } from "./Helper";
+import Loader from "react-loader";
 
 export class Blog extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     articles: {},
-  //     loaded: false,
-  //     tags: {}
-  //   };
-  // }
+  constructor() {
+    super();
+    this.state = {
+      articles: {},
+      loaded: false,
+      tags: {}
+    };
+  }
 
-  // componentDidMount() {
-  //   this.fireBaseSync();
-  // }
+  fetchArticles() {
+    const self = this;
+    axiosFetch(
+      "https://react-bootstrap-and-go.firebaseio.com/blog.json",
+      self,
+      "articles",
+      "loaded"
+    )
+      .then(function(i) {
+        console.log("got" + i);
+        self.setState({
+          articles: i,
+          loaded: true
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
 
-  // fireBaseSync() {
-  //   base.syncState("blog", {
-  //     context: this,
-  //     state: "articles",
-  //     asArray: false,
-  //     then() {
-  //       this.setState(prevState => ({
-  //         loaded: true
-  //       }));
-  //       fireBaseSync("blog", this.state.articles);
-  //     }
-  //   });
-  // }
+  componentWillMount() {
+    this.fetchArticles();
+  }
 
   render() {
     console.log(this);
+    let articles = this.state.articles;
     return (
       <div className="Blog">
-        <Loader loaded={this.props.location.state.loaded}>
-          <h1>Blog</h1>
-          <BlogRow item={this.props.location.state.articles} />
+        <Loader loaded={this.state.loaded}>
+          <div>
+            <h1>Blog</h1>
+            <BlogRow item={articles} />
+          </div>
         </Loader>
       </div>
     );
