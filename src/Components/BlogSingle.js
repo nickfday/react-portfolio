@@ -42,7 +42,9 @@ class BlogSingle extends Component {
     const self = this;
     let item = [];
 
-    if (this.state.articles !== null) {
+    if (this.props.articles) {
+      item = this.props.articles;
+    } else if (this.state.articles !== null) {
       item = this.state.articles.find(
         x =>
           x.title.replace(/\s+/g, "-").toLowerCase() ===
@@ -51,36 +53,34 @@ class BlogSingle extends Component {
             .replace(/\s+/g, "-")
             .toLowerCase()
       );
+    }
 
-      // const tags = item.tags.map(function(i, index) {
-      //   if (index !== item.tags.length - 1) {
-      //     return <span key={i}>{i}, </span>;
-      //   } else {
-      //     item = "test";
-      //     return <span key={i}>{i}</span>;
-      //   }
-      // });
+    // const tags = item.tags.map(function(i, index) {
+    //   if (index !== item.tags.length - 1) {
+    //     return <span key={i}>{i}, </span>;
+    //   } else {
+    //     item = "test";
+    //     return <span key={i}>{i}</span>;
+    //   }
+    // });
 
-      return (
-        <div>
-          <h4>{item.title}</h4>
-          <p>{item.date}</p>
-          <div className="img">
-            <img src={item.featuredImage} alt={item.featuredImageAlt} />
-          </div>
-          <p>{item.body}</p>
-          {/* <p>
+    return (
+      <Loader loaded={this.state.loaded}>
+        <h4>{item.title}</h4>
+        <p>{item.date}</p>
+        <div className="img">
+          <img src={item.featuredImage} alt={item.featuredImageAlt} />
+        </div>
+        <p>{item.body}</p>
+        {/* <p>
             <strong>Tags: </strong>
             {tags}
           </p> */}
-          <Link to="/Blog">
-            <button className="btn btn-secondary btn-sm">
-              Back to Articles
-            </button>
-          </Link>
-        </div>
-      );
-    } else return <div>waiting...</div>;
+        <Link to="/Blog">
+          <button className="btn btn-secondary btn-sm">Back to Articles</button>
+        </Link>
+      </Loader>
+    );
   }
 }
 
