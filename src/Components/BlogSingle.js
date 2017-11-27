@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./style/blog.css";
-import { axiosFetch } from "./Helper";
+import { axiosFetch, renderHTML, formatDate } from "./Helper";
 import Loader from "react-loader";
 
 class BlogSingle extends Component {
@@ -62,23 +62,30 @@ class BlogSingle extends Component {
     if (this.state.articles) {
       let item = this.state.articles;
       return (
-        <Loader loaded={this.state.loaded}>
-          <h4>{item.title}</h4>
-          <p>{item.date}</p>
-          <div className="img">
-            <img src={item.featuredImage} alt={item.featuredImageAlt} />
-          </div>
-          <p>{item.body}</p>
-          <p>
+        <div className="container">
+          <Loader loaded={this.state.loaded}>
+            <h1 className="float-left">{item.title}</h1>
+            <p className="float-right">
+              {formatDate(item.date, "Do MMMM YYYY")}
+            </p>
+            <div className="img">
+              <img src={item.featuredImage} alt={item.featuredImageAlt} />
+            </div>
+            <div
+              className="body"
+              dangerouslySetInnerHTML={renderHTML(item.content)}
+            />
+            {/* <p>
             <strong>Tags: </strong>
             <Tags articles={item} />
-          </p>
-          <Link to="/Blog">
-            <button className="btn btn-secondary btn-sm">
-              Back to Articles
-            </button>
-          </Link>
-        </Loader>
+          </p> */}
+            <Link to="/Blog">
+              <button className="btn btn-secondary btn-sm">
+                Back to Articles
+              </button>
+            </Link>
+          </Loader>
+        </div>
       );
     } else {
       return <Loader loaded={this.state.loaded} />;
