@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Button, Collapse, NavbarToggler } from "reactstrap";
+import { Collapse, NavbarToggler } from "reactstrap";
 //import { Blog } from "./Blog";
 
 class Navigation extends Component {
@@ -19,11 +19,10 @@ class Navigation extends Component {
   }
 
   render() {
-    console.log(this.props.state.articles);
     return (
       <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <Link className="navbar-brand" to="/">
-          react-bootstrap-and-go
+          Finley-Day Digital
         </Link>
         <NavbarToggler right onClick={this.toggle} />
 
@@ -39,8 +38,11 @@ class Navigation extends Component {
             <NavLink to="/blog" className="nav-link">
               <span>Blog</span>
             </NavLink>
+            <NavLink to="/projects" className="nav-link">
+              <span>Projects</span>
+            </NavLink>
           </ul>
-          <form className="form-inline my-2 my-lg-0">
+          {/* <form className="form-inline my-2 my-lg-0">
             <input
               className="form-control mr-sm-2"
               type="text"
@@ -48,7 +50,7 @@ class Navigation extends Component {
               aria-label="Search"
             />
             <Button color="outline-success">Search</Button>
-          </form>
+          </form> */}
         </Collapse>
       </nav>
     );
