@@ -3,15 +3,37 @@ import { Link, NavLink } from "react-router-dom";
 import { Collapse, NavbarToggler } from "reactstrap";
 //import { Blog } from "./Blog";
 
+function navToggle(self) {
+  let navLinks = document.querySelectorAll(".nav-link");
+  for (let i = 0; i < navLinks.length; i++) {
+    navLinks[i],
+      document
+        .querySelector("#root")
+        .addEventListener("click", function(event) {
+          if (self.state.isOpen) {
+            self.setState({
+              isOpen: false
+            });
+          } else {
+            return;
+          }
+        });
+  }
+}
+
 class Navigation extends Component {
   constructor(props) {
     super(props);
-
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false
     };
   }
+
+  componentDidMount() {
+    navToggle(this);
+  }
+
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
