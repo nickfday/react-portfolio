@@ -64,31 +64,23 @@ export class ProjectSingle extends Component {
 
 function BlogRow(props) {
   return (
-    <div className="row">
-      <div key={props.item.parent.title} className="post">
-        <div>
-          <div className="row">
-            {/* <div className="col-sm-4">
+    <div key={props.item.parent.title} className="post">
+      {/* <div className="col-sm-4">
               <div className="img">
                 <img src={props.item.source} alt="" />
               </div>
             </div> */}
-            <div className="">
-              <h3>{props.item.parent.title}</h3>
-              <div
-                className="body"
-                dangerouslySetInnerHTML={renderHTML(props.item.parent.content)}
-              />
-              <Link to="/projects">
-                <button className="btn btn-secondary btn-sm">
-                  See All Projects
-                </button>
-              </Link>
+      <div className="">
+        <h3>{props.item.parent.title}</h3>
+        <div
+          className="body"
+          dangerouslySetInnerHTML={renderHTML(props.item.parent.content)}
+        />
+        <Link to="/projects">
+          <button className="btn btn-secondary btn-sm">See All Projects</button>
+        </Link>
 
-              {/* <p>{props.item.parent.date_gmt}</p> */}
-            </div>
-          </div>
-        </div>
+        {/* <p>{props.item.parent.date_gmt}</p> */}
       </div>
     </div>
   );
