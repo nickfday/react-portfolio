@@ -1,0 +1,65 @@
+.projects {
+}
+
+.projects-list {
+  .body a:last-child {
+    display: none;
+  }
+}
+
+.project-single {
+  p:first-child {
+    border-left: 4px solid #333;
+    color: #222;
+    font-weight: 700;
+    padding-left: 5px;
+  }
+}
+
+.alignright {
+  float: right;
+  margin-left: 10px;
+}
+
+.slick-slider {
+  height: 160px;
+  margin-bottom: 30px;
+  .slick-list {
+    height: 160px;
+  }
+  .slick-arrow {
+    z-index: 1;
+  }
+  .slick-next:before,
+  .slick-prev:before {
+    color: #000 !important;
+    font-size: 35px !important;
+  }
+
+  .slick-prev {
+    left: -35px;
+  }
+  .slick-slide {
+    margin-right: 10px;
+    position: relative;
+    img {
+      // height: 156px;
+      // width: 192px;
+      width: 100%;
+    }
+    .caption {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+      background: #46524d;
+      color: #fff;
+      text-align: center;
+    }
+  }
+}
+
+// .slick-next {
+//   right: -20px;
+// }
