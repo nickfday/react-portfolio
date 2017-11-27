@@ -9,7 +9,10 @@ import Blog from "./Blog";
 import BlogSingle from "./BlogSingle";
 import Footer from "./Footer";
 import About from "./About";
+import Projects from "./Projects/Projects";
+import ProjectSingle from "./Projects/ProjectSingle";
 import base from "../base";
+import "./App.css";
 
 const NoMatch = ({ location }) => (
   <div className="container content">
@@ -46,11 +49,13 @@ class App extends Component {
         <Router>
           <div>
             <Navigation state={this.state} />
-            <div className="container content">
+            <div className="container-flexible content">
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/blog" component={Blog} />
+                <Route exact path="/projects" component={Projects} />
+                <Route exact path="/project/:id" component={ProjectSingle} />
                 <Route exact path="/blog/:id" component={BlogSingle} />
                 <Route component={NoMatch} />
               </Switch>
