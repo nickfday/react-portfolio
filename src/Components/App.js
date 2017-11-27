@@ -13,6 +13,9 @@ import Projects from "./Projects/Projects";
 import ProjectSingle from "./Projects/ProjectSingle";
 import base from "../base";
 import "./App.css";
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-54519684-1");
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 const NoMatch = ({ location }) => (
   <div className="container content">
