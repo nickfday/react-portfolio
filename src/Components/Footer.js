@@ -5,7 +5,7 @@ function Footer(/*props*/) {
   return (
     <footer className="footer">
       <div className="container">
-        <span className="text-muted">Place sticky footer content here.</span>
+        <span className="text-muted">&#169;Finley-Day Limited</span>
       </div>
     </footer>
   );
