@@ -1,5 +1,6 @@
 import base from "../base";
 import axios from "axios";
+import moment from "moment";
 
 export function fireBaseSync(context) {
   base.syncState("blog", {
@@ -19,18 +20,17 @@ export function axiosFetch(url, context, stateObject, loadedStatus) {
   return axios
     .get(url)
     .then(response => {
-      console.log(response);
-      console.log(stateObject);
-      console.log(loadedStatus);
-      // var key = stateObject;
-      // var val = response.data;
-      // var obj = {};
-      // obj[key] = val;
-      // console.log(obj);
-      // context.setState(obj);
       return response.data;
     })
     .catch(error => {
       console.log(error);
     });
+}
+
+export function renderHTML(markup) {
+  return { __html: markup };
+}
+
+export function formatDate(date, format) {
+  return moment(date).format(format);
 }
