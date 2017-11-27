@@ -39,16 +39,29 @@ export class Blog extends Component {
 
   render() {
     let articles = this.state.articles;
-    return (
-      <div className="Blog container">
-        <Loader loaded={this.state.loaded}>
-          <div>
-            <h1>Blog</h1>
-            <BlogRow item={articles} />
-          </div>
-        </Loader>
-      </div>
-    );
+    if (this.props.type === "home") {
+      return (
+        <div className="Blog container">
+          <Loader loaded={this.state.loaded}>
+            <div>
+              <h2>Blog</h2>
+              <BlogRow item={articles} />
+            </div>
+          </Loader>
+        </div>
+      );
+    } else {
+      return (
+        <div className="Blog container">
+          <Loader loaded={this.state.loaded}>
+            <div>
+              <h1>Blog</h1>
+              <BlogRow item={articles} />
+            </div>
+          </Loader>
+        </div>
+      );
+    }
   }
 }
 
@@ -59,11 +72,11 @@ function BlogRow(props) {
         <div key={i.uuid} className="col-sm-6 post">
           <div>
             <div className="row">
-              <div className="col-sm-4">
+              {/* <div className="col-sm-4">
                 <div className="img">
                   <img src={i.featuredImage} alt={i.featuredImageAlt} />
                 </div>
-              </div>
+              </div> */}
               <div className="col-sm-8">
                 <Link
                   to={{
