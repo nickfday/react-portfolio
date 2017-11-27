@@ -79,12 +79,52 @@ function ProjectSlides(props) {
   };
 
   const settings = {
-    arrows: true,
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1
+    responsive: [
+      {
+        breakpoint: 500,
+        settings: {
+          arrows: true,
+          dots: false,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          arrows: true,
+          dots: false,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          arrows: true,
+          dots: false,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 3,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 10000,
+        settings: {
+          arrows: true,
+          dots: false,
+          infinite: true,
+          speed: 300,
+          slidesToShow: 5,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
   return (
     <Slider {...settings}>
