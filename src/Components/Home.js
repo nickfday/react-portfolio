@@ -8,7 +8,7 @@ class App extends Component {
       <div className="home">
         <div className="intro">
           <section className="container">
-            <h2>Welcome</h2>
+            <h1>Welcome</h1>
             <p>
               We build professional web applications. From small-scale to large
               enterprise solutions. Our projects are listed below.
@@ -25,7 +25,7 @@ class App extends Component {
 
         <section className="">
           <div className="container">
-            <h2>Contact</h2>
+            <h1>Contact</h1>
             <p>
               If you’re interested in our services please email{" "}
               <a href="mailto:nickfday@gmail.com">nickfday@gmail.com</a>.
