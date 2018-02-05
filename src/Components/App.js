@@ -1,20 +1,20 @@
-import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
+import 'bootstrap/dist/css/bootstrap.css';
+import './App.css';
 
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./Home";
-import Navigation from "./Navigation";
-import Blog from "./Blog";
-import BlogSingle from "./BlogSingle";
-import Footer from "./Footer";
-import About from "./About";
-import Projects from "./Projects/Projects";
-import ProjectSingle from "./Projects/ProjectSingle";
-import base from "../base";
-import "./App.css";
-import ReactGA from "react-ga";
-ReactGA.initialize("UA-54519684-1");
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './Home';
+import Navigation from './Navigation';
+import Blog from './Blog';
+import BlogSingle from './BlogSingle';
+import Footer from './Footer';
+import About from './About';
+import Projects from './Projects/Projects';
+import ProjectSingle from './Projects/ProjectSingle';
+import base from '../base';
+import './App.css';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-54519684-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 const NoMatch = ({ location }) => (
@@ -33,17 +33,19 @@ class App extends Component {
   }
 
   fireBaseSync() {
-    base.syncState("blog", {
-      context: this,
-      state: "articles",
-      asArray: false,
-      then() {
-        this.setState(prevState => ({
-          loaded: true
-        }));
-        //fireBaseSync("blog", this.state.articles);
-      }
-    });
+    const request = async () =>
+      await base.syncState('blog', {
+        context: this,
+        state: 'articles',
+        asArray: false,
+        then() {
+          this.setState(prevState => ({
+            loaded: true
+          }));
+          //fireBaseSync("blog", this.state.articles);
+        }
+      });
+    request();
   }
 
   render() {
