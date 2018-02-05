@@ -127,7 +127,7 @@ function ProjectSlides(props) {
         <Link
           key={i.title}
           to={{
-            pathname: `/project/${i.parent.title}`.replace(/\s+/g, '-').toLowerCase(),
+            pathname: `/projects/${i.parent.title}`.replace(/\s+/g, '-').toLowerCase(),
             state: {
               item: i
             }
