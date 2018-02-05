@@ -1,14 +1,14 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "../style/blog.css";
-import "./projects.css";
-import { axiosFetch, formatDate } from "../Helper";
-import Loader from "react-loader";
-import _ from "lodash";
-import moment from "moment";
-import Slider from "react-slick";
-import "../../../node_modules/slick-carousel/slick/slick.css";
-import "../../../node_modules/slick-carousel/slick/slick-theme.css";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import '../style/blog.css';
+import './projects.css';
+import { axiosFetch, formatDate } from '../Helper';
+import Loader from 'react-loader';
+import _ from 'lodash';
+import moment from 'moment';
+import Slider from 'react-slick';
+import '../../../node_modules/slick-carousel/slick/slick.css';
+import '../../../node_modules/slick-carousel/slick/slick-theme.css';
 
 export class Projects extends Component {
   constructor() {
@@ -22,14 +22,9 @@ export class Projects extends Component {
 
   fetchArticles() {
     const self = this;
-    axiosFetch(
-      "http://api.finley-day.com/wp-json/media?parent?type=project.json",
-      self,
-      "articles",
-      "loaded"
-    )
+    axiosFetch('http://api.finley-day.com/wp-json/media?parent?type=project.json', self, 'articles', 'loaded')
       .then(function(i) {
-        var orderedEvents = _.orderBy(i, o => o.parent.date_gmt, "desc");
+        var orderedEvents = _.orderBy(i, o => o.parent.date_gmt, 'desc');
 
         self.setState({
           articles: orderedEvents,
@@ -74,8 +69,8 @@ export class Projects extends Component {
 
 function ProjectSlides(props) {
   const slideStyle = {
-    height: "156px",
-    width: "192px"
+    height: '156px',
+    width: '192px'
   };
 
   const settings = {
@@ -132,9 +127,7 @@ function ProjectSlides(props) {
         <Link
           key={i.title}
           to={{
-            pathname: `/project/${i.parent.title}`
-              .replace(/\s+/g, "-")
-              .toLowerCase(),
+            pathname: `/project/${i.parent.title}`.replace(/\s+/g, '-').toLowerCase(),
             state: {
               item: i
             }
@@ -163,9 +156,7 @@ function ProjectRow(props) {
               <div className="col-sm-9">
                 <Link
                   to={{
-                    pathname: `/project/${i.parent.title}`
-                      .replace(/\s+/g, "-")
-                      .toLowerCase(),
+                    pathname: `/project/${i.parent.title}`.replace(/\s+/g, '-').toLowerCase(),
                     state: {
                       item: i
                     }
@@ -173,12 +164,9 @@ function ProjectRow(props) {
                 >
                   <h3>{i.parent.title}</h3>
                 </Link>
-                <div
-                  className="body"
-                  dangerouslySetInnerHTML={createMarkup(i.parent.excerpt)}
-                />
+                <div className="body" dangerouslySetInnerHTML={createMarkup(i.parent.excerpt)} />
 
-                <p>{formatDate(i.parent.date_gmt, "MMMM YYYY")}</p>
+                <p>{formatDate(i.parent.date_gmt, 'MMMM YYYY')}</p>
               </div>
             </div>
           </div>
