@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./style/blog.css";
-import { axiosFetch, formatDate, renderHTML } from "./Helper";
-import Loader from "react-loader";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './style/blog.css';
+import { axiosFetch, formatDate, renderHTML } from './Helper';
+import Loader from 'react-loader';
 
 export class Blog extends Component {
   constructor() {
@@ -16,12 +16,7 @@ export class Blog extends Component {
 
   fetchArticles() {
     const self = this;
-    axiosFetch(
-      "http://api.finley-day.com/wp-json/posts",
-      self,
-      "articles",
-      "loaded"
-    )
+    axiosFetch('http://api.finley-day.com/wp-json/posts', self, 'articles', 'loaded')
       .then(function(i) {
         self.setState({
           articles: i,
@@ -39,7 +34,7 @@ export class Blog extends Component {
 
   render() {
     let articles = this.state.articles;
-    if (this.props.type === "home") {
+    if (this.props.type === 'home') {
       return (
         <div className="Blog container">
           <Loader loaded={this.state.loaded}>
@@ -66,6 +61,7 @@ export class Blog extends Component {
 }
 
 function BlogRow(props) {
+  console.log(props);
   return (
     <div className="row" key={props.item.uuid}>
       {Object.values(props.item).map(i => (
@@ -80,9 +76,7 @@ function BlogRow(props) {
               <div className="col-sm-8">
                 <Link
                   to={{
-                    pathname: `/blog/${i.title}`
-                      .replace(/\s+/g, "-")
-                      .toLowerCase(),
+                    pathname: `/blog/${i.title}`.replace(/\s+/g, '-').toLowerCase(),
                     state: {
                       item: i
                     }
@@ -91,7 +85,7 @@ function BlogRow(props) {
                   <h3>{i.title}</h3>
                 </Link>
                 <p>{i.summary}</p>
-                <p>{formatDate(i.date, "Do MMMM YYYY")}</p>
+                <p>{formatDate(i.date, 'Do MMMM YYYY')}</p>
               </div>
             </div>
           </div>
