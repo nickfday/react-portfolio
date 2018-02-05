@@ -14,6 +14,7 @@ import ProjectSingle from './Projects/ProjectSingle';
 import base from '../base';
 import './App.css';
 import ReactGA from 'react-ga';
+import PageWrapper from './PageWrapper';
 ReactGA.initialize('UA-54519684-1');
 ReactGA.pageview(window.location.pathname + window.location.search);
 
@@ -56,13 +57,13 @@ class App extends Component {
             <Navigation state={this.state} />
             <div className="container-flexible content">
               <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/about" component={About} />
-                <Route exact path="/blog" component={Blog} />
-                <Route exact path="/projects" component={Projects} />
-                <Route exact path="/projects/:id" component={ProjectSingle} />
-                <Route exact path="/blog/:id" component={BlogSingle} />
-                <Route component={NoMatch} />
+                <Route exact path="/" component={PageWrapper(Home)} />
+                <Route exact path="/about" component={PageWrapper(About)} />
+                <Route exact path="/blog" component={PageWrapper(Blog)} />
+                <Route exact path="/projects" component={PageWrapper(Projects)} />
+                <Route exact path="/projects/:id" component={PageWrapper(ProjectSingle)} />
+                <Route exact path="/blog/:id" component={PageWrapper(BlogSingle)} />
+                <Route component={PageWrapper(NoMatch)} />
               </Switch>
             </div>
             <Footer />
