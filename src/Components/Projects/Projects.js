@@ -156,7 +156,7 @@ function ProjectRow(props) {
               <div className="col-sm-9">
                 <Link
                   to={{
-                    pathname: `/project/${i.parent.title}`.replace(/\s+/g, '-').toLowerCase(),
+                    pathname: `/projects/${i.parent.title}`.replace(/\s+/g, '-').toLowerCase(),
                     state: {
                       item: i
                     }

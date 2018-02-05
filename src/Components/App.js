@@ -32,21 +32,21 @@ class App extends Component {
     };
   }
 
-  fireBaseSync() {
-    const request = async () =>
-      await base.syncState('blog', {
-        context: this,
-        state: 'articles',
-        asArray: false,
-        then() {
-          this.setState(prevState => ({
-            loaded: true
-          }));
-          //fireBaseSync("blog", this.state.articles);
-        }
-      });
-    request();
-  }
+  // fireBaseSync() {
+  //   const request = async () =>
+  //     await base.syncState('blog', {
+  //       context: this,
+  //       state: 'articles',
+  //       asArray: false,
+  //       then() {
+  //         this.setState(prevState => ({
+  //           loaded: true
+  //         }));
+  //         //fireBaseSync("blog", this.state.articles);
+  //       }
+  //     });
+  //   request();
+  // }
 
   render() {
     return (
@@ -60,7 +60,7 @@ class App extends Component {
                 <Route exact path="/about" component={About} />
                 <Route exact path="/blog" component={Blog} />
                 <Route exact path="/projects" component={Projects} />
-                <Route exact path="/project/:id" component={ProjectSingle} />
+                <Route exact path="/projects/:id" component={ProjectSingle} />
                 <Route exact path="/blog/:id" component={BlogSingle} />
                 <Route component={NoMatch} />
               </Switch>

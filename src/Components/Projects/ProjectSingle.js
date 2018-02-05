@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './projects.css';
-import { axiosFetch, renderHTML, formatDate } from '../Helper';
+import { axiosFetch, renderHTML, formatDate, getLastHref } from '../Helper';
+import axios from 'axios';
 
 import Loader from 'react-loader';
 
@@ -15,18 +16,30 @@ export class ProjectSingle extends Component {
     };
   }
 
-  async fetchArticles() {
-    try {
-      let response = await axiosFetch('http://api.finley-day.com/wp-json/media?parent?type=project.json');
-      const url = this.props.location.pathname.substr(this.props.location.pathname.lastIndexOf('/') + 1);
-      let item = response.find(x => url === x.parent.title.replace(/\s+/g, '-').toLowerCase());
-      this.setState({
-        articles: item,
-        loaded: true
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  fetchArticles() {
+    (async () => {
+      try {
+        const response = await axios('http://api.finley-day.com/wp-json/media?parent?type=project');
+        let item = response.data.find(x => getLastHref() === x.parent.title.replace(/\s+/g, '-').toLowerCase());
+        this.setState({
+          articles: item,
+          loaded: true
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+    // try {
+    //   let response = await axiosFetch('http://api.finley-day.com/wp-json/media?parent?type=project.json');
+    //   const url = this.props.location.pathname.substr(this.props.location.pathname.lastIndexOf('/') + 1);
+    //   let item = response.find(x => url === x.parent.title.replace(/\s+/g, '-').toLowerCase());
+    //   this.setState({
+    //     articles: item,
+    //     loaded: true
+    //   });
+    // } catch (error) {
+    //   console.log(error);
+    // }
   }
 
   componentWillMount() {

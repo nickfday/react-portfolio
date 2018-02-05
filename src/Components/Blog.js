@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './style/blog.css';
 import { axiosFetch, formatDate, renderHTML } from './Helper';
 import Loader from 'react-loader';
+import axios from 'axios';
 
 export class Blog extends Component {
   constructor() {
@@ -14,18 +15,27 @@ export class Blog extends Component {
     };
   }
 
-  fetchArticles() {
-    const self = this;
-    axiosFetch('http://api.finley-day.com/wp-json/posts', self, 'articles', 'loaded')
-      .then(function(i) {
-        self.setState({
-          articles: i,
-          loaded: true
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
+  async fetchArticles() {
+    try {
+      const request = await axios.get('http://api.finley-day.com/wp-json/posts');
+      this.setState({
+        articles: request.data,
+        loaded: true
       });
+    } catch (error) {
+      console.log(error);
+    }
+    // const self = this;
+    // axiosFetch('http://api.finley-day.com/wp-json/posts', self, 'articles', 'loaded')
+    //   .then(function(i) {
+    //     self.setState({
+    //       articles: i,
+    //       loaded: true
+    //     });
+    //   })
+    //   .catch(function(error) {
+    //     console.log(error);
+    //   });
   }
 
   componentWillMount() {
@@ -61,7 +71,6 @@ export class Blog extends Component {
 }
 
 function BlogRow(props) {
-  console.log(props);
   return (
     <div className="row" key={props.item.uuid}>
       {Object.values(props.item).map(i => (
@@ -95,32 +104,32 @@ function BlogRow(props) {
   );
 }
 
-export function BlogSingle(props) {
-  let item = props.location.state.item;
-  const tags = item.tags.map(function(i, index) {
-    if (index !== item.tags.length - 1) {
-      return <span key={i}>{i}, </span>;
-    } else {
-      return <span key={i}>{i}</span>;
-    }
-  });
-  return (
-    <div>
-      <h4>{item.title}</h4>
-      <p>{item.date}</p>
-      <div className="img">
-        <img src={item.featuredImage} alt={item.featuredImageAlt} />
-      </div>
-      <p>{item.body}</p>
-      <p>
-        <strong>Tags: </strong>
-        {tags}
-      </p>
-      <Link to="/Blog">
-        <button className="btn btn-secondary btn-sm">Back to Articles</button>
-      </Link>
-    </div>
-  );
-}
+// export function BlogSingle(props) {
+//   let item = props.location.state.item;
+//   const tags = item.tags.map(function(i, index) {
+//     if (index !== item.tags.length - 1) {
+//       return <span key={i}>{i}, </span>;
+//     } else {
+//       return <span key={i}>{i}</span>;
+//     }
+//   });
+//   return (
+//     <div>
+//       <h4>{item.title}</h4>
+//       <p>{item.date}</p>
+//       <div className="img">
+//         <img src={item.featuredImage} alt={item.featuredImageAlt} />
+//       </div>
+//       <p>{item.body}</p>
+//       <p>
+//         <strong>Tags: </strong>
+//         {tags}
+//       </p>
+//       <Link to="/Blog">
+//         <button className="btn btn-secondary btn-sm">Back to Articles</button>
+//       </Link>
+//     </div>
+//   );
+// }
 
 export default Blog;
