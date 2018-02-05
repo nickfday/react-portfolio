@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import "./projects.css";
-import { axiosFetch, renderHTML, formatDate } from "../Helper";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import './projects.css';
+import { axiosFetch, renderHTML, formatDate } from '../Helper';
 
-import Loader from "react-loader";
+import Loader from 'react-loader';
 
 export class ProjectSingle extends Component {
   constructor() {
@@ -15,41 +15,38 @@ export class ProjectSingle extends Component {
     };
   }
 
-  fetchArticles() {
-    const self = this;
-    axiosFetch(
-      "http://api.finley-day.com/wp-json/media?parent?type=project.json",
-      self,
-      "articles",
-      "loaded"
-    )
-      .then(function(i) {
-        let item = i.find(
-          x =>
-            x.parent.title.replace(/\s+/g, "-").toLowerCase() ===
-            self.props.location.state.item.parent.title
-              .slice(7)
-              .replace(/\s+/g, "-")
-              .toLowerCase()
-        );
-
-        self.setState({
-          articles: item,
-          loaded: true
-        });
-      })
-      .catch(function(error) {
-        console.log(error);
+  async fetchArticles() {
+    try {
+      let response = await axiosFetch('http://api.finley-day.com/wp-json/media?parent?type=project.json');
+      const url = this.props.location.pathname.substr(this.props.location.pathname.lastIndexOf('/') + 1);
+      let item = response.find(x => url === x.parent.title.replace(/\s+/g, '-').toLowerCase());
+      this.setState({
+        articles: item,
+        loaded: true
       });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   componentWillMount() {
-    this.fetchArticles();
+    if (!this.props.location.state) {
+      this.fetchArticles();
+    } else {
+      this.setState({
+        loaded: true
+      });
+    }
   }
 
   render() {
-    //let articles = this.state.articles;
-    let articles = this.props.location.state.item;
+    let articles = null;
+    if (!this.props.location.state) {
+      articles = this.state.articles;
+    } else {
+      articles = this.props.location.state.item;
+    }
+    // let articles = this.state.articles;
     return (
       <div className="project-single container">
         <Loader loaded={this.state.loaded}>
@@ -65,22 +62,12 @@ export class ProjectSingle extends Component {
 function BlogRow(props) {
   return (
     <div key={props.item.parent.title} className="post">
-      {/* <div className="col-sm-4">
-              <div className="img">
-                <img src={props.item.source} alt="" />
-              </div>
-            </div> */}
       <div className="">
         <h3>{props.item.parent.title}</h3>
-        <div
-          className="body"
-          dangerouslySetInnerHTML={renderHTML(props.item.parent.content)}
-        />
+        <div className="body" dangerouslySetInnerHTML={renderHTML(props.item.parent.content)} />
         <Link to="/projects">
           <button className="btn btn-secondary btn-sm">See All Projects</button>
         </Link>
-
-        {/* <p>{props.item.parent.date_gmt}</p> */}
       </div>
     </div>
   );
