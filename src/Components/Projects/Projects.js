@@ -7,8 +7,8 @@ import Loader from 'react-loader';
 import _ from 'lodash';
 import moment from 'moment';
 import Slider from 'react-slick';
-import '../../../node_modules/slick-carousel/slick/slick.css';
-import '../../../node_modules/slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export class Projects extends Component {
   constructor() {
