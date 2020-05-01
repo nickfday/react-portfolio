@@ -18,7 +18,7 @@ export class Blog extends Component {
   async fetchArticles() {
     try {
       const request = await axios.get(
-        'http://api.finley-day.com/wp-json/posts'
+        'https://api.finley-day.com/wp-json/posts'
       );
       this.setState({
         articles: request.data,
