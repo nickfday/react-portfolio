@@ -10,14 +10,16 @@ export class Blog extends Component {
     super();
     this.state = {
       articles: {},
-      loaded: false,
+      loaded: true,
       tags: {}
     };
   }
 
   async fetchArticles() {
     try {
-      const request = await axios.get('http://api.finley-day.com/wp-json/posts');
+      const request = await axios.get(
+        'http://api.finley-day.com/wp-json/posts'
+      );
       this.setState({
         articles: request.data,
         loaded: true
@@ -85,7 +87,9 @@ function BlogRow(props) {
               <div className="col-sm-8">
                 <Link
                   to={{
-                    pathname: `/blog/${i.title}`.replace(/\s+/g, '-').toLowerCase(),
+                    pathname: `/blog/${i.title}`
+                      .replace(/\s+/g, '-')
+                      .toLowerCase(),
                     state: {
                       item: i
                     }

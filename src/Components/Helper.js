@@ -1,20 +1,5 @@
-import base from '../base';
 import axios from 'axios';
 import moment from 'moment';
-
-export function fireBaseSync(context) {
-  base.syncState('blog', {
-    context: this,
-    state: 'articles',
-    asArray: false
-    // then() {
-    //   this.setState(prevState => ({
-    //     loaded: true
-    //   }));
-    //   //fireBaseSync("blog", this.state.articles);
-    // }
-  });
-}
 
 export function axiosFetch(url, context, stateObject, loadedStatus) {
   return axios

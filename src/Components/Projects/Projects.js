@@ -15,14 +15,19 @@ export class Projects extends Component {
     super();
     this.state = {
       articles: {},
-      loaded: false,
+      loaded: true,
       tags: {}
     };
   }
 
   fetchArticles() {
     const self = this;
-    axiosFetch('http://api.finley-day.com/wp-json/media?parent?type=project.json', self, 'articles', 'loaded')
+    axiosFetch(
+      'http://api.finley-day.com/wp-json/media?parent?type=project.json',
+      self,
+      'articles',
+      'loaded'
+    )
       .then(function(i) {
         var orderedEvents = _.orderBy(i, o => o.parent.date_gmt, 'desc');
 
@@ -127,7 +132,9 @@ function ProjectSlides(props) {
         <Link
           key={i.title}
           to={{
-            pathname: `/projects/${i.parent.title}`.replace(/\s+/g, '-').toLowerCase(),
+            pathname: `/projects/${i.parent.title}`
+              .replace(/\s+/g, '-')
+              .toLowerCase(),
             state: {
               item: i
             }
@@ -156,7 +163,9 @@ function ProjectRow(props) {
               <div className="col-sm-9">
                 <Link
                   to={{
-                    pathname: `/projects/${i.parent.title}`.replace(/\s+/g, '-').toLowerCase(),
+                    pathname: `/projects/${i.parent.title}`
+                      .replace(/\s+/g, '-')
+                      .toLowerCase(),
                     state: {
                       item: i
                     }
@@ -164,7 +173,10 @@ function ProjectRow(props) {
                 >
                   <h3>{i.parent.title}</h3>
                 </Link>
-                <div className="body" dangerouslySetInnerHTML={createMarkup(i.parent.excerpt)} />
+                <div
+                  className="body"
+                  dangerouslySetInnerHTML={createMarkup(i.parent.excerpt)}
+                />
 
                 <p>{formatDate(i.parent.date_gmt, 'MMMM YYYY')}</p>
               </div>
