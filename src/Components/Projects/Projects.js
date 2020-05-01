@@ -23,7 +23,7 @@ export class Projects extends Component {
   fetchArticles() {
     const self = this;
     axiosFetch(
-      'http://api.finley-day.com/wp-json/media?filter[media_category]=project',
+      'https://api.finley-day.com/wp-json/media?filter[media_category]=project',
       self,
       'articles',
       'loaded'

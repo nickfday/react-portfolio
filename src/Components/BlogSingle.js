@@ -52,7 +52,7 @@ class BlogSingle extends Component {
         );
         const responseID = item.ID;
         const responseComments = await axios(
-          'http://api.finley-day.com/wp-json/posts/' + responseID + '/comments'
+          'https://api.finley-day.com/wp-json/posts/' + responseID + '/comments'
         );
         item.comments = responseComments.data;
 

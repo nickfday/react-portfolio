@@ -19,8 +19,13 @@ export class ProjectSingle extends Component {
   fetchArticles() {
     (async () => {
       try {
-        const response = await axios('http://api.finley-day.com/wp-json/media?parent?type=project');
-        let item = response.data.find(x => getLastHref() === x.parent.title.replace(/\s+/g, '-').toLowerCase());
+        const response = await axios(
+          'https://api.finley-day.com/wp-json/media?parent?type=project'
+        );
+        let item = response.data.find(
+          x =>
+            getLastHref() === x.parent.title.replace(/\s+/g, '-').toLowerCase()
+        );
         this.setState({
           articles: item,
           loaded: true
@@ -77,7 +82,10 @@ function BlogRow(props) {
     <div key={props.item.parent.title} className="post">
       <div className="">
         <h3>{props.item.parent.title}</h3>
-        <div className="body" dangerouslySetInnerHTML={renderHTML(props.item.parent.content)} />
+        <div
+          className="body"
+          dangerouslySetInnerHTML={renderHTML(props.item.parent.content)}
+        />
         <Link to="/projects">
           <button className="btn btn-secondary btn-sm">See All Projects</button>
         </Link>
