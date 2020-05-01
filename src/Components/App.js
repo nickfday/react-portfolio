@@ -11,7 +11,6 @@ import Footer from './Footer';
 import About from './About';
 import Projects from './Projects/Projects';
 import ProjectSingle from './Projects/ProjectSingle';
-import base from '../base';
 import './App.css';
 import ReactGA from 'react-ga';
 import PageWrapper from './PageWrapper';
@@ -33,22 +32,6 @@ class App extends Component {
     };
   }
 
-  // fireBaseSync() {
-  //   const request = async () =>
-  //     await base.syncState('blog', {
-  //       context: this,
-  //       state: 'articles',
-  //       asArray: false,
-  //       then() {
-  //         this.setState(prevState => ({
-  //           loaded: true
-  //         }));
-  //         //fireBaseSync("blog", this.state.articles);
-  //       }
-  //     });
-  //   request();
-  // }
-
   render() {
     return (
       <div className="App">
@@ -60,9 +43,21 @@ class App extends Component {
                 <Route exact path="/" component={PageWrapper(Home)} />
                 <Route exact path="/about" component={PageWrapper(About)} />
                 <Route exact path="/blog" component={PageWrapper(Blog)} />
-                <Route exact path="/projects" component={PageWrapper(Projects)} />
-                <Route exact path="/projects/:id" component={PageWrapper(ProjectSingle)} />
-                <Route exact path="/blog/:id" component={PageWrapper(BlogSingle)} />
+                <Route
+                  exact
+                  path="/projects"
+                  component={PageWrapper(Projects)}
+                />
+                <Route
+                  exact
+                  path="/projects/:id"
+                  component={PageWrapper(ProjectSingle)}
+                />
+                <Route
+                  exact
+                  path="/blog/:id"
+                  component={PageWrapper(BlogSingle)}
+                />
                 <Route component={PageWrapper(NoMatch)} />
               </Switch>
             </div>
