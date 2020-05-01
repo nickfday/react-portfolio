@@ -6,7 +6,7 @@ export const Welcome = () => {
   // const [data, setData] = useState({ data: [] });
 
   // useEffect(async () => {
-  //   const result = await axios('http://api.finley-day.com/wp-json/pages/85');
+  //   const result = await axios('https://api.finley-day.com/wp-json/pages/85');
   //   setData(result.data);
   // });
 

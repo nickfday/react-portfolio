@@ -2,7 +2,7 @@
   "name": "react-bootstrap-and-go",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://finley-day.com",
+  "homepage": "https://finley-day.com",
   "dependencies": {
     "axios": "0.19.2",
     "bootstrap": "^4.0.0",

@@ -43,7 +43,9 @@ class BlogSingle extends Component {
   fetchArticles() {
     (async () => {
       try {
-        const response = await axios('http://api.finley-day.com/wp-json/posts');
+        const response = await axios(
+          'https://api.finley-day.com/wp-json/posts'
+        );
         console.log('loaded');
         this.addSmoothScroll();
         //const commentsResponse = await axios('http://api.finley-day.com/wp-json/posts/' + i.location.state.item.ID + '/comments');
@@ -76,7 +78,7 @@ class BlogSingle extends Component {
     (async () => {
       try {
         const response = await axios(
-          'http://api.finley-day.com/wp-json/posts/' +
+          'https://api.finley-day.com/wp-json/posts/' +
             i.location.state.item.ID +
             '/comments'
         );
@@ -155,7 +157,7 @@ function CommentsPost(props) {
   function handleSubmit(e) {
     e.preventDefault();
     axios.post(
-      'http://api.finley-day.com/?wpapi=comment&dev=1&name=' +
+      'https://api.finley-day.com/?wpapi=comment&dev=1&name=' +
         emailInput.value +
         '&email=' +
         emailInput.value +
