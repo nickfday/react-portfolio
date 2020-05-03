@@ -10,10 +10,10 @@
     "lodash": "^4.17.5",
     "moment": "2.24.0",
     "popper.js": "1.12.9",
-    "react": "16.2.0",
+    "react": "16.13.1",
     "react-addons-css-transition-group": "^15.6.0",
     "react-addons-transition-group": "^15.6.0",
-    "react-dom": "16.2.0",
+    "react-dom": "16.13.1",
     "react-ga": "^2.4.1",
     "react-highlight": "^0.12.0",
     "react-loader": "^2.4.2",
@@ -21,7 +21,8 @@
     "react-slick": "^0.18.1",
     "react-twitter-widgets": "^1.6.1",
     "reactstrap": "^4.8.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
     "eslint": "^4.17.0",
@@ -36,6 +37,7 @@
     "start-js": "react-scripts start",
     "start": "npm-run-all -p start-js",
     "build": "react-scripts build",
+    "deploy": "react-scripts build && scp -r build nickf@finley-day.com:/var/www/portfolioReact",
     "test": "react-scripts test --env=node",
     "eject": "react-scripts eject"
   }

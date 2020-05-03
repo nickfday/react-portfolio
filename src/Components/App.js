@@ -8,7 +8,7 @@ import Navigation from './Navigation';
 import Blog from './Blog';
 import BlogSingle from './BlogSingle';
 import Footer from './Footer';
-import About from './About';
+import { About } from './About';
 import Projects from './Projects/Projects';
 import ProjectSingle from './Projects/ProjectSingle';
 import './App.css';
