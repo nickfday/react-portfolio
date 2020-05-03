@@ -1,5 +1,6 @@
 import axios from 'axios';
 import moment from 'moment';
+import { useState, useEffect } from 'react';
 
 export function axiosFetch(url, context, stateObject, loadedStatus) {
   return axios
@@ -28,4 +29,19 @@ export function getLastHref() {
   } else {
     return splitHref[splitHref.length - 1];
   }
+}
+
+export function useFetch(url) {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  async function fetchUrl() {
+    const response = await fetch(url);
+    const json = await response.json();
+    setData(json);
+    setLoading(false);
+  }
+  useEffect(() => {
+    fetchUrl();
+  }, []);
+  return [data, loading];
 }

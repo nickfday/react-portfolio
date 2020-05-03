@@ -15,7 +15,7 @@ export class Projects extends Component {
     super();
     this.state = {
       articles: {},
-      loaded: true,
+      loaded: false,
       tags: {}
     };
   }
