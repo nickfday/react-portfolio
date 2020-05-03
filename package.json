@@ -43,6 +43,12 @@
     "eject": "react-scripts eject",
     "postbuild": "react-snap"
   },
+  "reactSnap": {
+    "inlineCss": true,
+    "removeBlobs": true,
+    "removeScriptTags": true,
+    "removeStyleTags": true
+  },
   "browserslist": {
     "production": [
       ">0.2%",
