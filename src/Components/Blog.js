@@ -27,17 +27,6 @@ export class Blog extends Component {
     } catch (error) {
       console.log(error);
     }
-    // const self = this;
-    // axiosFetch('http://api.finley-day.com/wp-json/posts', self, 'articles', 'loaded')
-    //   .then(function(i) {
-    //     self.setState({
-    //       articles: i,
-    //       loaded: true
-    //     });
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //   });
   }
 
   componentWillMount() {
