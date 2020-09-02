@@ -60,9 +60,9 @@ class Navigation extends Component {
             <NavLink exact to="/about" className="nav-link">
               <span>About</span>
             </NavLink>
-            <NavLink to="/blog" className="nav-link">
+            {/* <NavLink to="/blog" className="nav-link">
               <span>Blog</span>
-            </NavLink>
+            </NavLink> */}
             <NavLink to="/projects" className="nav-link">
               <span>Projects</span>
             </NavLink>

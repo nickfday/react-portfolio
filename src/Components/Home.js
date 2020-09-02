@@ -16,9 +16,9 @@ class App extends Component {
           <Projects slider="true" />
         </section>
 
-        <section className="contact">
+        {/* <section className="contact">
           <Blog type="home" />
-        </section>
+        </section> */}
 
         <section className="">
           <div className="container">
